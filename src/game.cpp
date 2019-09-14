@@ -1,14 +1,15 @@
 #include "game.h"
 #include <iostream>
+#include <cmath>
 #include "SDL.h"
 
 Game::Game(std::size_t grid_width, std::size_t grid_height)
     : snake(grid_width, grid_height),
       engine(dev()),
-      random_w(0, static_cast<int>(grid_width)),
-      random_h(0, static_cast<int>(grid_height)) {
-  PlaceFood();
-}
+      random_w(0, static_cast<int>(grid_width - 1)),
+      random_h(0, static_cast<int>(grid_height - 1)) {
+        PlaceFood();
+      }
 
 void Game::Run(Controller const &controller, Renderer &renderer,
                std::size_t target_frame_duration) {
@@ -41,9 +42,9 @@ void Game::Run(Controller const &controller, Renderer &renderer,
       title_timestamp = frame_end;
     }
 
-    // If the time for this frame is too small (i.e. frame_duration is
-    // smaller than the target ms_per_frame), delay the loop to
-    // achieve the correct frame rate.
+    // If the time for this frame is too small (i.e. frame_duration is smaller
+    // than the target ms_per_frame), delay the loop to achieve the correct
+    // frame rate.
     if (frame_duration < target_frame_duration) {
       SDL_Delay(target_frame_duration - frame_duration);
     }
@@ -55,8 +56,8 @@ void Game::PlaceFood() {
   while (true) {
     x = random_w(engine);
     y = random_h(engine);
-    // Check that the location is not occupied by a snake item before placing
-    // food.
+    // Check that the location is not occupied by 
+    // a snake item before placing food.
     if (!snake.SnakeCell(x, y)) {
       food.x = x;
       food.y = y;
@@ -77,7 +78,7 @@ void Game::Update() {
   if (food.x == new_x && food.y == new_y) {
     score++;
     PlaceFood();
-    // Grow snake and increase speed.
+    // Grow sanke and increase speed.
     snake.GrowBody();
     snake.speed += 0.02;
   }

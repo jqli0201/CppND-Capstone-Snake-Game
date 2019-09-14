@@ -6,13 +6,39 @@
 
 #IncludeRegexTransform: 
 
-/Users/jasmineli/projects/siri/side/CppND-Capstone-Snake-Game/src/snake.cpp
+/Users/jasmineli/projects/siri/side/CppND-Capstone-Snake-Game/src/controller.h
 snake.h
 /Users/jasmineli/projects/siri/side/CppND-Capstone-Snake-Game/src/snake.h
-cmath
--
+
+/Users/jasmineli/projects/siri/side/CppND-Capstone-Snake-Game/src/game.cpp
+game.h
+/Users/jasmineli/projects/siri/side/CppND-Capstone-Snake-Game/src/game.h
 iostream
 -
+cmath
+-
+SDL.h
+/Users/jasmineli/projects/siri/side/CppND-Capstone-Snake-Game/src/SDL.h
+
+/Users/jasmineli/projects/siri/side/CppND-Capstone-Snake-Game/src/game.h
+random
+-
+SDL.h
+/Users/jasmineli/projects/siri/side/CppND-Capstone-Snake-Game/src/SDL.h
+controller.h
+/Users/jasmineli/projects/siri/side/CppND-Capstone-Snake-Game/src/controller.h
+renderer.h
+/Users/jasmineli/projects/siri/side/CppND-Capstone-Snake-Game/src/renderer.h
+snake.h
+/Users/jasmineli/projects/siri/side/CppND-Capstone-Snake-Game/src/snake.h
+
+/Users/jasmineli/projects/siri/side/CppND-Capstone-Snake-Game/src/renderer.h
+vector
+-
+SDL.h
+/Users/jasmineli/projects/siri/side/CppND-Capstone-Snake-Game/src/SDL.h
+snake.h
+/Users/jasmineli/projects/siri/side/CppND-Capstone-Snake-Game/src/snake.h
 
 /Users/jasmineli/projects/siri/side/CppND-Capstone-Snake-Game/src/snake.h
 vector
