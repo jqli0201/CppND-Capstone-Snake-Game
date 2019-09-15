@@ -12,11 +12,14 @@ void Controller::ChangeDirection(Snake &snake, Snake::Direction input,
 
 void Controller::HandleInput(bool &running, Snake &snake) const {
   SDL_Event e;
-  while (SDL_PollEvent(&e) || running) {
-    if (e.type == SDL_QUIT) {
+  while (SDL_PollEvent(&e)) {
+        std::cout << "we  are here" << std::endl;
+    if (e.type == SDL_QUIT || !running) {
       running = false;
+      std::cout << "quit" << std::endl;
     }
     else if (e.type == SDL_KEYDOWN) {
+      std::cout << "I am trying to type" << std::endl;
       switch (e.key.keysym.sym) {
         case SDLK_UP:
           ChangeDirection(snake, Snake::Direction::kUp,

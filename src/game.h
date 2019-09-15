@@ -20,6 +20,7 @@ class Game {
     int GetScore() const;
     int GetSize() const;
     int GetHighest();
+    bool GetStatus();
 
   private:
     Snake _snake;

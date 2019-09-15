@@ -24,6 +24,7 @@ void Game::Run(Controller& controller,
   Uint32 frame_end;
   Uint32 frame_duration;
   int frame_count = 0;
+  bool running = true;
 
   std::vector<std::thread> threads;
   threads.emplace_back(std::thread(&Game::Update, this, target_frame_duration));
@@ -33,10 +34,11 @@ void Game::Run(Controller& controller,
                                    std::ref(_food),
                                    std::ref(*this)));
 
+  
   while (running) {
     frame_start = SDL_GetTicks();
-
     controller.HandleInput(running, _snake);
+    
 
     // Input, Update, Render - the main game loop.
     // controller.HandleInput(running, snake);
@@ -48,7 +50,7 @@ void Game::Run(Controller& controller,
     // Keep track of how long each loop through the input/update/render cycle
     // takes.
     frame_count++;
-    frame_duration = frame_end - frame_start;
+    // frame_duration = frame_end - frame_start;
 
     // After every second, update the window title.
     if (frame_end - title_timestamp >= 1000) {
@@ -60,9 +62,9 @@ void Game::Run(Controller& controller,
     // If the time for this frame is too small (i.e. frame_duration is smaller
     // than the target ms_per_frame), delay the loop to achieve the correct
     // frame rate.
-    if (frame_duration < target_frame_duration) {
-      SDL_Delay(target_frame_duration - frame_duration);
-    }
+    // if (frame_duration < target_frame_duration) {
+    //   SDL_Delay(target_frame_duration - frame_duration);
+    // }
     
     for (auto &t : threads) t.join();
   }
@@ -84,7 +86,7 @@ void Game::PlaceFood() {
 }
 
 void Game::Update(std::size_t target_frame_duration) {
-  while (running) {
+  while (true) {
     if (!_snake.alive) return;
 
     _snake.Update(target_frame_duration);
@@ -110,3 +112,4 @@ void Game::Update(std::size_t target_frame_duration) {
 int Game::GetScore() const { return score; }
 int Game::GetSize() const { return _snake.size; }
 int Game::GetHighest() { return highest; }
+bool Game::GetStatus() { return running; }

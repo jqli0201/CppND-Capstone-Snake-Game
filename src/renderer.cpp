@@ -44,6 +44,7 @@ void Renderer::Render(Snake const &snake,
                       Game &game) {
   Uint32 title_timestamp = SDL_GetTicks();
   int frame_count = 0;
+  bool running = game.GetStatus();
 
   while (running) {
     frame_count++;
@@ -84,11 +85,11 @@ void Renderer::Render(Snake const &snake,
     // Update Screen
     SDL_RenderPresent(sdl_renderer);
 
-    if (SDL_GetTicks() - title_timestamp >= 1000) {
-      UpdateWindowTitle(game.GetScore(), frame_count, game.GetHighest());
-      frame_count = 0;
-      title_timestamp = SDL_GetTicks();
-    }
+    // if (SDL_GetTicks() - title_timestamp >= 1000) {
+    //   UpdateWindowTitle(game.GetScore(), frame_count, game.GetHighest());
+    //   frame_count = 0;
+    //   title_timestamp = SDL_GetTicks();
+    // }
 
     // Sleep 1ms between iterations
     std::this_thread::sleep_for(std::chrono::milliseconds(1));
