@@ -1,6 +1,8 @@
 #include "renderer.h"
+
 #include <iostream>
 #include <string>
+#include <thread>
 
 Renderer::Renderer(const std::size_t screen_width,
                    const std::size_t screen_height,
@@ -37,8 +39,15 @@ Renderer::~Renderer() {
   SDL_Quit();
 }
 
-void Renderer::Render(Snake const snake, SDL_Point const &food, bool &running) {
-  while (running) { 
+void Renderer::Render(Snake const &snake, 
+                      SDL_Point const &food,
+                      Game &game) {
+  Uint32 title_timestamp = SDL_GetTicks();
+  int frame_count = 0;
+
+  while (running) {
+    frame_count++;
+
     SDL_Rect block;
     block.w = screen_width / grid_width;
     block.h = screen_height / grid_height;
@@ -74,6 +83,15 @@ void Renderer::Render(Snake const snake, SDL_Point const &food, bool &running) {
 
     // Update Screen
     SDL_RenderPresent(sdl_renderer);
+
+    if (SDL_GetTicks() - title_timestamp >= 1000) {
+      UpdateWindowTitle(game.GetScore(), frame_count, game.GetHighest());
+      frame_count = 0;
+      title_timestamp = SDL_GetTicks();
+    }
+
+    // Sleep 1ms between iterations
+    std::this_thread::sleep_for(std::chrono::milliseconds(1));
   }
 }
 

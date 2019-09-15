@@ -26,12 +26,12 @@ void Game::Run(Controller& controller,
   int frame_count = 0;
 
   std::vector<std::thread> threads;
-  threads.emplace_back(std::thread(&Game::Update, this));
+  threads.emplace_back(std::thread(&Game::Update, this, target_frame_duration));
   threads.emplace_back(std::thread(&Renderer::Render, 
                                    &renderer, 
                                    std::ref(_snake), 
-                                   std::ref(_food)),
-                                   std::ref(running));
+                                   std::ref(_food),
+                                   std::ref(*this)));
 
   while (running) {
     frame_start = SDL_GetTicks();
@@ -83,11 +83,11 @@ void Game::PlaceFood() {
   }
 }
 
-void Game::Update() {
+void Game::Update(std::size_t target_frame_duration) {
   while (running) {
     if (!_snake.alive) return;
 
-    _snake.Update();
+    _snake.Update(target_frame_duration);
 
     int new_x = static_cast<int>(_snake.head_x);
     int new_y = static_cast<int>(_snake.head_y);
@@ -100,6 +100,9 @@ void Game::Update() {
       _snake.GrowBody();
       _snake.speed += 0.02;
     }
+
+    // Sleep 1ms between iterations
+    std::this_thread::sleep_for(std::chrono::milliseconds(1));
   }
 
 }

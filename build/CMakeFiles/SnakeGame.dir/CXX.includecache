@@ -55,6 +55,8 @@ iostream
 -
 string
 -
+thread
+-
 
 /Users/jasmineli/projects/siri/side/CppND-Capstone-Snake-Game/src/renderer.h
 vector
@@ -63,6 +65,20 @@ SDL.h
 /Users/jasmineli/projects/siri/side/CppND-Capstone-Snake-Game/src/SDL.h
 snake.h
 /Users/jasmineli/projects/siri/side/CppND-Capstone-Snake-Game/src/snake.h
+game.h
+/Users/jasmineli/projects/siri/side/CppND-Capstone-Snake-Game/src/game.h
+
+/Users/jasmineli/projects/siri/side/CppND-Capstone-Snake-Game/src/snake.cpp
+snake.h
+/Users/jasmineli/projects/siri/side/CppND-Capstone-Snake-Game/src/snake.h
+renderer.h
+/Users/jasmineli/projects/siri/side/CppND-Capstone-Snake-Game/src/renderer.h
+cmath
+-
+iostream
+-
+SDL.h
+/Users/jasmineli/projects/siri/side/CppND-Capstone-Snake-Game/src/SDL.h
 
 /Users/jasmineli/projects/siri/side/CppND-Capstone-Snake-Game/src/snake.h
 vector

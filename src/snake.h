@@ -14,7 +14,7 @@ class Snake {
           head_x(grid_width / 2),
           head_y(grid_height / 2) {}
     
-    void Update();
+    void Update(std::size_t target_fram_duration);
 
     void GrowBody();
     bool SnakeCell(int x, int y);

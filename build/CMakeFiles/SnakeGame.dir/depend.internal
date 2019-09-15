@@ -153,6 +153,8 @@ CMakeFiles/SnakeGame.dir/src/main.cpp.o
  /usr/local/Cellar/sdl2/2.0.10/include/SDL2/begin_code.h
  /usr/local/Cellar/sdl2/2.0.10/include/SDL2/close_code.h
 CMakeFiles/SnakeGame.dir/src/renderer.cpp.o
+ /Users/jasmineli/projects/siri/side/CppND-Capstone-Snake-Game/src/controller.h
+ /Users/jasmineli/projects/siri/side/CppND-Capstone-Snake-Game/src/game.h
  /Users/jasmineli/projects/siri/side/CppND-Capstone-Snake-Game/src/renderer.cpp
  /Users/jasmineli/projects/siri/side/CppND-Capstone-Snake-Game/src/renderer.h
  /Users/jasmineli/projects/siri/side/CppND-Capstone-Snake-Game/src/snake.h
@@ -202,6 +204,9 @@ CMakeFiles/SnakeGame.dir/src/renderer.cpp.o
  /usr/local/Cellar/sdl2/2.0.10/include/SDL2/begin_code.h
  /usr/local/Cellar/sdl2/2.0.10/include/SDL2/close_code.h
 CMakeFiles/SnakeGame.dir/src/snake.cpp.o
+ /Users/jasmineli/projects/siri/side/CppND-Capstone-Snake-Game/src/controller.h
+ /Users/jasmineli/projects/siri/side/CppND-Capstone-Snake-Game/src/game.h
+ /Users/jasmineli/projects/siri/side/CppND-Capstone-Snake-Game/src/renderer.h
  /Users/jasmineli/projects/siri/side/CppND-Capstone-Snake-Game/src/snake.cpp
  /Users/jasmineli/projects/siri/side/CppND-Capstone-Snake-Game/src/snake.h
  /usr/local/Cellar/sdl2/2.0.10/include/SDL2/SDL.h
