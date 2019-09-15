@@ -17,6 +17,10 @@ iostream
 -
 cmath
 -
+vector
+-
+thread
+-
 SDL.h
 /Users/jasmineli/projects/siri/side/CppND-Capstone-Snake-Game/src/SDL.h
 
