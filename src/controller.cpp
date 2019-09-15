@@ -1,5 +1,6 @@
-#include "controller.h"
 #include <iostream>
+
+#include "controller.h"
 #include "SDL.h"
 #include "snake.h"
 
@@ -14,23 +15,24 @@ void Controller::HandleInput(bool &running, Snake &snake) const {
   while (SDL_PollEvent(&e)) {
     if (e.type == SDL_QUIT) {
       running = false;
-    } else if (e.type == SDL_KEYDOWN) {
+    }
+    else if (e.type == SDL_KEYDOWN) {
       switch (e.key.keysym.sym) {
         case SDLK_UP:
           ChangeDirection(snake, Snake::Direction::kUp,
                           Snake::Direction::kDown);
           break;
-
+        
         case SDLK_DOWN:
           ChangeDirection(snake, Snake::Direction::kDown,
                           Snake::Direction::kUp);
           break;
-
+        
         case SDLK_LEFT:
           ChangeDirection(snake, Snake::Direction::kLeft,
                           Snake::Direction::kRight);
           break;
-
+        
         case SDLK_RIGHT:
           ChangeDirection(snake, Snake::Direction::kRight,
                           Snake::Direction::kLeft);
@@ -38,4 +40,4 @@ void Controller::HandleInput(bool &running, Snake &snake) const {
       }
     }
   }
-}
+} 
