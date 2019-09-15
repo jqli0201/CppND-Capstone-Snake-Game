@@ -4,6 +4,7 @@
 #include <cmath>
 #include <vector>
 #include <thread>
+#include <functional>
 
 #include "SDL.h"
 
@@ -15,25 +16,27 @@ Game::Game(std::size_t grid_width, std::size_t grid_height)
         PlaceFood();
       }
 
-void Game::Run(Controller const& controller, Renderer& renderer,
+void Game::Run(Controller& controller,
+               Renderer& renderer,
                std::size_t target_frame_duration) {
   Uint32 title_timestamp = SDL_GetTicks();
   Uint32 frame_start;
   Uint32 frame_end;
   Uint32 frame_duration;
   int frame_count = 0;
-  bool running = true;
 
   std::vector<std::thread> threads;
-  threads.emplace_back(std::thread(&Controller::HandleInput, 
-                       controller, running, _snake));
   threads.emplace_back(std::thread(&Game::Update, this));
-  threads.emplace_back(std::thread(&Renderer::Render, renderer, _snake, _food));
-
-  for (auto &t : threads) t.join();
+  threads.emplace_back(std::thread(&Renderer::Render, 
+                                   &renderer, 
+                                   std::ref(_snake), 
+                                   std::ref(_food)),
+                                   std::ref(running));
 
   while (running) {
     frame_start = SDL_GetTicks();
+
+    controller.HandleInput(running, _snake);
 
     // Input, Update, Render - the main game loop.
     // controller.HandleInput(running, snake);
@@ -60,12 +63,10 @@ void Game::Run(Controller const& controller, Renderer& renderer,
     if (frame_duration < target_frame_duration) {
       SDL_Delay(target_frame_duration - frame_duration);
     }
+    
+    for (auto &t : threads) t.join();
   }
 }
-
-void Start() {
-
-  }
 
 void Game::PlaceFood() {
   int x, y;
@@ -83,7 +84,7 @@ void Game::PlaceFood() {
 }
 
 void Game::Update() {
-  // while (running) {
+  while (running) {
     if (!_snake.alive) return;
 
     _snake.Update();
@@ -99,7 +100,8 @@ void Game::Update() {
       _snake.GrowBody();
       _snake.speed += 0.02;
     }
-  // }
+  }
+
 }
 
 int Game::GetScore() const { return score; }

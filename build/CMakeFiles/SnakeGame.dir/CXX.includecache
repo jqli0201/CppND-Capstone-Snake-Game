@@ -21,6 +21,8 @@ vector
 -
 thread
 -
+functional
+-
 SDL.h
 /Users/jasmineli/projects/siri/side/CppND-Capstone-Snake-Game/src/SDL.h
 
@@ -35,6 +37,24 @@ renderer.h
 /Users/jasmineli/projects/siri/side/CppND-Capstone-Snake-Game/src/renderer.h
 snake.h
 /Users/jasmineli/projects/siri/side/CppND-Capstone-Snake-Game/src/snake.h
+
+/Users/jasmineli/projects/siri/side/CppND-Capstone-Snake-Game/src/main.cpp
+iostream
+-
+controller.h
+/Users/jasmineli/projects/siri/side/CppND-Capstone-Snake-Game/src/controller.h
+game.h
+/Users/jasmineli/projects/siri/side/CppND-Capstone-Snake-Game/src/game.h
+renderer.h
+/Users/jasmineli/projects/siri/side/CppND-Capstone-Snake-Game/src/renderer.h
+
+/Users/jasmineli/projects/siri/side/CppND-Capstone-Snake-Game/src/renderer.cpp
+renderer.h
+/Users/jasmineli/projects/siri/side/CppND-Capstone-Snake-Game/src/renderer.h
+iostream
+-
+string
+-
 
 /Users/jasmineli/projects/siri/side/CppND-Capstone-Snake-Game/src/renderer.h
 vector
