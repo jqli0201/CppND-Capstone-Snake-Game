@@ -44,7 +44,6 @@ void Renderer::Render(Snake const &snake,
                       Game &game) {
   Uint32 title_timestamp = SDL_GetTicks();
   int frame_count = 0;
-  bool running = game.GetStatus();
 
   while (running) {
     frame_count++;
@@ -100,4 +99,8 @@ void Renderer::UpdateWindowTitle(int score, int fps, int highest) {
   std::string title{"Snake Score: " + std::to_string(score) + " FPS: " + std::
     to_string(fps) + " Highest Score: " + std::to_string(highest)};
   SDL_SetWindowTitle(sdl_window, title.c_str());
+}
+
+void Renderer::Stop() {
+  running = false;
 }
