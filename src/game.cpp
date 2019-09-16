@@ -25,7 +25,6 @@ void Game::Run(Controller& controller,
   Uint32 frame_end;
   Uint32 frame_duration;
   int frame_count = 0;
-  bool running = true;
 
   // load the highest score from file record.txt
   Game::LoadRecord();
@@ -56,9 +55,8 @@ void Game::Run(Controller& controller,
     std::this_thread::sleep_for(std::chrono::milliseconds(1));
   }
   renderer.Stop();
-  std::cout << "waiting for join" << std::endl;
-  running = false;
-  std::cout << running << std::endl;
+
+  // block until threads are terminated
   for (auto &t : threads) t.join();
 }
 
@@ -78,7 +76,7 @@ void Game::PlaceFood() {
 }
 
 void Game::Update(std::size_t target_frame_duration) {
-  while (GetStatus()) {
+  while (running) {
     if (!_snake.alive) return;
 
     _snake.Update(target_frame_duration);
@@ -98,13 +96,11 @@ void Game::Update(std::size_t target_frame_duration) {
     // Sleep 1ms between iterations
     std::this_thread::sleep_for(std::chrono::milliseconds(1));
   }
-  std::cout << "Stop update" << std::endl;
 }
 
 int Game::GetScore() const { return score; }
 int Game::GetSize() const { return _snake.size; }
-int Game::GetHighest() { return highest; }
-bool Game::GetStatus() { return running; }
+int Game::GetHighest() const { return highest; }
 
 void Game::LoadRecord() {
   char file[] = "../record.txt";
@@ -120,4 +116,8 @@ void Game::LoadRecord() {
   else {
 
   }
+}
+
+void Game::UpdateRecord() {
+  
 }

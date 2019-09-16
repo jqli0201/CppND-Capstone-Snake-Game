@@ -19,8 +19,7 @@ class Game {
     void Start();
     int GetScore() const;
     int GetSize() const;
-    int GetHighest();
-    bool GetStatus();
+    int GetHighest() const;
 
   private:
     Snake _snake;
@@ -36,6 +35,7 @@ class Game {
     int highest{0};
 
     void LoadRecord();
+    void UpdateRecord();
     void PlaceFood();
     void Update(std::size_t target_frame_duration);
 };
