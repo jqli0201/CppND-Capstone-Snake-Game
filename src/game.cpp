@@ -5,6 +5,7 @@
 #include <vector>
 #include <thread>
 #include <functional>
+#include <fstream>
 
 #include "SDL.h"
 
@@ -36,7 +37,6 @@ void Game::Run(Controller& controller,
   
   while (running) {
     frame_start = SDL_GetTicks();
-    std::cout << "this loop is running" << std::endl;
     controller.HandleInput(running, _snake);
 
     // Keep track of how long each loop through the input/update/render cycle
@@ -53,6 +53,8 @@ void Game::Run(Controller& controller,
     std::this_thread::sleep_for(std::chrono::milliseconds(1));
   }
   std::cout << "waiting for join" << std::endl;
+  running = false;
+  std::cout << running << std::endl;
   for (auto &t : threads) t.join();
 }
 
@@ -72,7 +74,7 @@ void Game::PlaceFood() {
 }
 
 void Game::Update(std::size_t target_frame_duration) {
-  while (true) {
+  while (running) {
     if (!_snake.alive) return;
 
     _snake.Update(target_frame_duration);
@@ -92,10 +94,19 @@ void Game::Update(std::size_t target_frame_duration) {
     // Sleep 1ms between iterations
     std::this_thread::sleep_for(std::chrono::milliseconds(1));
   }
-
+  std::cout << "Stop update" << std::endl;
 }
 
 int Game::GetScore() const { return score; }
 int Game::GetSize() const { return _snake.size; }
 int Game::GetHighest() { return highest; }
 bool Game::GetStatus() { return running; }
+
+void Game::LoadRecord() {
+  char file[] = "../record.txt";
+  std::ifstream Infield(file);
+  if (!Infield.good()) {
+    std::cout << "Here" << std::endl;
+    std::ofstream output("./../record.txt");
+  }
+}

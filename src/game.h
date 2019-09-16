@@ -35,6 +35,7 @@ class Game {
     int score{0};
     int highest{0};
 
+    void LoadRecord();
     void PlaceFood();
     void Update(std::size_t target_frame_duration);
 };

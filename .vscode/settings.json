@@ -73,6 +73,7 @@
     "locale": "cpp",
     "mutex": "cpp",
     "ratio": "cpp",
-    "set": "cpp"
+    "set": "cpp",
+    "fstream": "cpp"
   }
 }

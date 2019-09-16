@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 
 #include "controller.h"
 #include "game.h"
@@ -12,6 +13,12 @@ int main() {
   constexpr std::size_t kGridWidth{32};
   constexpr std::size_t kGridHeight{32};
 
+
+//   if (checkExistence(file)) {
+//     std::ofstream output("./../record.txt");
+// output << L"Hello, world!";
+//   }
+
   Renderer renderer(kScreenWidth, kScreenHeight, kGridWidth, kGridHeight);
   Controller controller;
   Game game(kGridWidth, kGridHeight);
@@ -22,3 +29,4 @@ int main() {
   std::cout << "Highest: " << game.GetHighest() << "\n";
   return 0;
 }
+
