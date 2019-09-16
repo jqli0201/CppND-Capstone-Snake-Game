@@ -1,3 +1,0 @@
-/Users/jasmineli/projects/siri/side/CppND-Capstone-Snake-Game/build/CMakeFiles/rebuild_cache.dir
-/Users/jasmineli/projects/siri/side/CppND-Capstone-Snake-Game/build/CMakeFiles/edit_cache.dir
-/Users/jasmineli/projects/siri/side/CppND-Capstone-Snake-Game/build/CMakeFiles/SnakeGame.dir

@@ -33,24 +33,16 @@ void Game::Run(Controller& controller,
                                    std::ref(_snake), 
                                    std::ref(_food),
                                    std::ref(*this)));
-
   
   while (running) {
     frame_start = SDL_GetTicks();
+    std::cout << "this loop is running" << std::endl;
     controller.HandleInput(running, _snake);
-    
-
-    // Input, Update, Render - the main game loop.
-    // controller.HandleInput(running, snake);
-    // Update();
-    // renderer.Render(snake, food);
-
-    frame_end = SDL_GetTicks();
 
     // Keep track of how long each loop through the input/update/render cycle
     // takes.
+    frame_end = SDL_GetTicks();
     frame_count++;
-    // frame_duration = frame_end - frame_start;
 
     // After every second, update the window title.
     if (frame_end - title_timestamp >= 1000) {
@@ -58,16 +50,10 @@ void Game::Run(Controller& controller,
       frame_count = 0;
       title_timestamp = frame_end;
     }
-
-    // If the time for this frame is too small (i.e. frame_duration is smaller
-    // than the target ms_per_frame), delay the loop to achieve the correct
-    // frame rate.
-    // if (frame_duration < target_frame_duration) {
-    //   SDL_Delay(target_frame_duration - frame_duration);
-    // }
-    
-    for (auto &t : threads) t.join();
+    std::this_thread::sleep_for(std::chrono::milliseconds(1));
   }
+  std::cout << "waiting for join" << std::endl;
+  for (auto &t : threads) t.join();
 }
 
 void Game::PlaceFood() {
